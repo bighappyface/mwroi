@@ -1,12 +1,12 @@
-import React from 'react';
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import Theme from "./Theme";
 
 function App() {
   return (
-    <div>
-      <header>
-        Hello World!
-      </header>
-    </div>
+    <ThemeProvider theme={Theme}>
+      <CssBaseline />
+    </ThemeProvider>
   );
 }
 
