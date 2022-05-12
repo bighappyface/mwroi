@@ -6,6 +6,7 @@ function App() {
   return (
     <ThemeProvider theme={Theme}>
       <CssBaseline />
+      <h1>This is a font test</h1>
     </ThemeProvider>
   );
 }

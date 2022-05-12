@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'MaisonNeue';
+  src:
+  url('/fonts/MaisonNeue-Book.woff2') format('woff2'),
+  url('/fonts/MaisonNeue-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MaisonNeue';
+  src:
+  url('/fonts/MaisonNeue-Demi.woff2') format('woff2'),
+  url('/fonts/MaisonNeue-Demi.woff') format('woff');
+   font-weight:bold;
+  font-style: normal;
+  font-display: swap;
+}
