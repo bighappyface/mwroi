@@ -1,9 +1,9 @@
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
+import RoundedButton from './RoundedButton'
 
 function TopBar() {
   return (
@@ -40,13 +40,12 @@ function TopBar() {
               Moveworks
             </Typography>
             <Box sx={{ flexGrow: 1 }} />
-            <Button
+            <RoundedButton
               variant="contained"
-              sx={{ borderRadius: 6, textTransform: 'none' }}
               href="https://www.moveworks.com/request-demo"
             >
               Demo Request
-            </Button>
+            </RoundedButton>
           </Toolbar>
         </Container>
       </AppBar>
