@@ -11,7 +11,8 @@ function Preamble() {
       sx={{
         backgroundColor: '#FFF',
         backgroundImage: `url(${BgImage})`,
-        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
       }}
     >
       <Container sx={{ py: 5 }} maxWidth="md">
