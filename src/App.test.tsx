@@ -21,3 +21,9 @@ test('renders the footer with accurate copyright year', () => {
   const currentYear = new Date().getFullYear().toString()
   expect(copyrightElement).toHaveTextContent(currentYear)
 })
+
+test('renders the preamble', () => {
+  render(<App />)
+  const preambleElement = screen.getByText(/See your ROI with Moveworks/i)
+  expect(preambleElement).toBeInTheDocument()
+})
