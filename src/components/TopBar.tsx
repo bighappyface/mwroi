@@ -16,7 +16,7 @@ function TopBar() {
           boxShadow: 'none',
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="md">
           <Toolbar sx={{ flexWrap: 'wrap' }} disableGutters={true}>
             <svg
               width="32"

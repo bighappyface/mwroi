@@ -14,9 +14,9 @@ function Preamble() {
         backgroundPosition: 'center',
       }}
     >
-      <Container sx={{ py: 5 }}>
+      <Container sx={{ py: 5 }} maxWidth="md">
         <Grid container>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={8}>
             <Stack spacing={3}>
               <Typography
                 component="h1"
@@ -37,7 +37,7 @@ function Preamble() {
               </Typography>
             </Stack>
           </Grid>
-          <Grid item xs={12} md={6}></Grid>
+          <Grid item xs={12} md={4}></Grid>
         </Grid>
       </Container>
     </Box>

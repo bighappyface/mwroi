@@ -27,3 +27,9 @@ test('renders the preamble', () => {
   const preambleElement = screen.getByText(/See your ROI with Moveworks/i)
   expect(preambleElement).toBeInTheDocument()
 })
+
+test('renders the definitions', () => {
+  render(<App />)
+  const definitionsElement = screen.getAllByText(/A couple of definitions/i)
+  expect(definitionsElement[0]).toBeInTheDocument()
+})
