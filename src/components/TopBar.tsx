@@ -31,7 +31,7 @@ function TopBar() {
               fill="#450D7C"
             ></path>
           </svg>
-          <Typography sx={{ fontWeight: 'bold', fontSize: '20px', ml: 1 }}>
+          <Typography sx={{ fontWeight: 'bold', fontSize: '1.25rem', ml: 1 }}>
             Moveworks
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
