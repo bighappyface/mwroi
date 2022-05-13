@@ -42,7 +42,7 @@ function TopBar() {
             <Box sx={{ flexGrow: 1 }} />
             <Button
               variant="contained"
-              sx={{ borderRadius: 28 }}
+              sx={{ borderRadius: 6, textTransform: 'none' }}
               href="https://www.moveworks.com/request-demo"
             >
               Demo Request
