@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import CalculatorSteps from './CalculatorSteps'
 import RoundedButton from './RoundedButton'
+import NumberFormat from 'react-number-format'
 
 function BusinessInfoForm() {
   return (
@@ -12,8 +13,23 @@ function BusinessInfoForm() {
         <Typography component="h2" variant="h5">
           Business Information
         </Typography>
-        <TextField id="employees" label="Number of Employees" variant="outlined" fullWidth />
-        <TextField id="revenue" label="Annual Revenue" variant="outlined" fullWidth />
+        <NumberFormat
+          id="employees"
+          label="Number of Employees"
+          fullWidth
+          customInput={TextField}
+          thousandSeparator
+          isNumericString
+        />
+        <NumberFormat
+          id="revenue"
+          label="Annual Revenue"
+          fullWidth
+          customInput={TextField}
+          thousandSeparator
+          isNumericString
+          prefix={'$'}
+        />
         <RoundedButton variant="contained" size="large">
           Next
         </RoundedButton>
