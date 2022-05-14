@@ -43,8 +43,8 @@ function Results() {
         <TableContainer component={Paper}>
           <Table aria-label="Year 1 Ticket Impact Details">
             <TableBody>
-              {impactRows.map((row) => (
-                <TableRow>
+              {impactRows.map((row, i) => (
+                <TableRow key={i}>
                   <TableCell>
                     <Typography fontWeight="bold">{row[0]}</Typography>
                   </TableCell>
@@ -80,7 +80,7 @@ function Results() {
           <Table aria-label="Year 1 Benefit Details">
             <TableBody>
               {benefitOpsRows.map((row) => (
-                <TableRow>
+                <TableRow key={`Operational Efficiency ${row[0]}`}>
                   <TableCell>
                     <Typography fontWeight="bold">{row[0]}</Typography>
                   </TableCell>
@@ -109,7 +109,7 @@ function Results() {
           <Table aria-label="Year 1 Benefit Details">
             <TableBody>
               {benefitExpRows.map((row) => (
-                <TableRow>
+                <TableRow key={`Employee Experience ${row[0]}`}>
                   <TableCell>
                     <Typography fontWeight="bold">{row[0]}</Typography>
                   </TableCell>
