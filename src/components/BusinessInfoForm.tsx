@@ -44,7 +44,10 @@ function BusinessInfoForm() {
           }}
           isAllowed={(values) => {
             const { formattedValue, floatValue } = values
-            return formattedValue === '' || Number(floatValue) <= 500000
+            return (
+              formattedValue === '' ||
+              (Number(floatValue) > 0 && Number(floatValue) <= 500000)
+            )
           }}
         />
         <NumberFormat
@@ -61,7 +64,10 @@ function BusinessInfoForm() {
           }}
           isAllowed={(values) => {
             const { formattedValue, floatValue } = values
-            return formattedValue === '' || Number(floatValue) <= 100000000000
+            return (
+              formattedValue === '' ||
+              (Number(floatValue) > 0 && Number(floatValue) <= 100000000000)
+            )
           }}
         />
         <RoundedButton
