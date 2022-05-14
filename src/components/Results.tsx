@@ -31,8 +31,8 @@ function Results() {
   const impactRows = [
     ['Tickets Resolved', getTicketsResolved()],
     ['Tickets Accelerated', getTicketsAccelerated()],
-    ['Productive Hours Saved per Employee', getProductiveHoursSaved()],
-    ['Total Wait Hours Saved per Employee	', getWaitHoursSaved()],
+    ['Productive Hours Saved per Employee', getProductiveHoursSaved().toFixed(1)],
+    ['Total Wait Hours Saved per Employee	', getWaitHoursSaved().toFixed(1)],
   ]
 
   const benefitOpsRows = [
