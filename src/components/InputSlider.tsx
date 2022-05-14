@@ -6,7 +6,7 @@ import Slider from '@mui/material/Slider'
 import Stack from '@mui/material/Stack'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import NumberFormat from 'react-number-format'
+import NumberFormat, { NumberFormatPropsBase } from 'react-number-format'
 
 interface InputSliderProps {
   defaultValue: number
@@ -15,6 +15,8 @@ interface InputSliderProps {
   label: string
   labelShort: string
   tooltipText?: string
+  numberFormatProps?: NumberFormatPropsBase<any>
+  sliderStep?: number
 }
 
 function InputSlider(props: InputSliderProps) {
@@ -27,7 +29,7 @@ function InputSlider(props: InputSliderProps) {
   }
 
   return (
-    <Grid container spacing={2} alignItems="center">
+    <Grid container spacing={2} alignItems="center" columnSpacing={{ xs: 0, sm: 2 }}>
       <Grid item xs={8}>
         <Stack direction="row" spacing={1}>
           <Typography id={`input-slider-${props.labelShort}`}>
@@ -42,34 +44,49 @@ function InputSlider(props: InputSliderProps) {
       </Grid>
       <Grid item xs={4}>
         <NumberFormat
-          value={(value as any)}
+          value={value as any}
           size="small"
           readOnly
           inputProps={{
-            step: 1,
             min: props.minValue,
             max: props.maxValue,
-            type: 'number',
             'aria-labelledby': `input-slider-${props.labelShort}`,
           }}
           fullWidth
           customInput={MuiInput}
           thousandSeparator
-          isNumericString
+          {...props.numberFormatProps}
         />
       </Grid>
       <Grid item xs={1}>
-        <Typography textAlign="center">{props.minValue}</Typography>
+        <Typography textAlign="center" display={{ xs: "none", sm: "block" }}>
+          <NumberFormat
+            displayType="text"
+            value={props.minValue}
+            thousandSeparator
+            {...props.numberFormatProps}
+          />
+        </Typography>
       </Grid>
       <Grid item xs={10}>
         <Slider
           value={typeof value === 'number' ? value : 0}
           onChange={handleSliderChange}
           aria-labelledby={`input-slider-${props.labelShort}`}
+          min={props.minValue}
+          max={props.maxValue}
+          step={props.sliderStep ? props.sliderStep : 1}
         />
       </Grid>
       <Grid item xs={1}>
-        <Typography textAlign="center">{props.maxValue}</Typography>
+        <Typography textAlign="center" display={{ xs: "none", sm: "block" }}>
+          <NumberFormat
+            displayType="text"
+            value={props.maxValue}
+            thousandSeparator
+            {...props.numberFormatProps}
+          />
+        </Typography>
       </Grid>
     </Grid>
   )
