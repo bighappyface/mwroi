@@ -6,6 +6,7 @@ import Slider from '@mui/material/Slider'
 import Stack from '@mui/material/Stack'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
+import NumberFormat from 'react-number-format'
 
 interface InputSliderProps {
   defaultValue: number
@@ -25,18 +26,6 @@ function InputSlider(props: InputSliderProps) {
     setValue(newValue)
   }
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value === '' ? '' : Number(event.target.value))
-  }
-
-  const handleBlur = () => {
-    if (value < 0) {
-      setValue(0)
-    } else if (value > props.maxValue) {
-      setValue(props.maxValue)
-    }
-  }
-
   return (
     <Grid container spacing={2} alignItems="center">
       <Grid item xs={8}>
@@ -52,11 +41,10 @@ function InputSlider(props: InputSliderProps) {
         </Stack>
       </Grid>
       <Grid item xs={4}>
-        <MuiInput
-          value={value}
+        <NumberFormat
+          value={(value as any)}
           size="small"
-          onChange={handleInputChange}
-          onBlur={handleBlur}
+          readOnly
           inputProps={{
             step: 1,
             min: props.minValue,
@@ -65,6 +53,9 @@ function InputSlider(props: InputSliderProps) {
             'aria-labelledby': `input-slider-${props.labelShort}`,
           }}
           fullWidth
+          customInput={MuiInput}
+          thousandSeparator
+          isNumericString
         />
       </Grid>
       <Grid item xs={1}>

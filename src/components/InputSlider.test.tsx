@@ -29,19 +29,3 @@ test('sets the default value', () => {
   const inputElement = screen.getAllByLabelText(/average ticket time/i) as HTMLInputElement[]
   expect(inputElement[0].value).toBe('50')
 })
-
-test('enforces minimum value', () => {
-  render(slider)
-  const inputElement = screen.getAllByLabelText(/average ticket time/i) as HTMLInputElement[]
-  fireEvent.change(inputElement[0], {target: {value: '-9'}})
-  fireEvent.focusOut(inputElement[0]);
-  expect(inputElement[0].value).toBe('0')
-})
-
-test('enforces maximum value', () => {
-  render(slider)
-  const inputElement = screen.getAllByLabelText(/average ticket time/i) as HTMLInputElement[]
-  fireEvent.change(inputElement[0], {target: {value: '10000'}})
-  fireEvent.focusOut(inputElement[0]);
-  expect(inputElement[0].value).toBe('100')
-})
