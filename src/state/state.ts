@@ -5,4 +5,4 @@ const state = new BlacReact([
   new CalculatorCubit()
 ]);
 
-export const { useBloc } = state;
+export const { useBloc, observer } = state;

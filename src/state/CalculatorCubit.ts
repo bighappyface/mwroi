@@ -22,8 +22,13 @@ export default class CalculatorCubit extends Cubit<CalculatorData> {
   }
 
   nextStep = (): void => {
-    this.state.activeStep++
+    if (this.state.activeStep < 2)
+      this.state.activeStep++
     this.emit(this.state)
+  }
+
+  getActiveStep = () => {
+    return this.state.activeStep
   }
 
   setEmployees = (employees: string | number): void => {
