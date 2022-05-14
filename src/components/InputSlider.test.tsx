@@ -26,6 +26,8 @@ test('renders the various properties', () => {
 
 test('sets the default value', () => {
   render(slider)
-  const inputElement = screen.getAllByLabelText(/average ticket time/i) as HTMLInputElement[]
+  const inputElement = screen.getAllByLabelText(
+    /average ticket time/i,
+  ) as HTMLInputElement[]
   expect(inputElement[0].value).toBe('50')
 })

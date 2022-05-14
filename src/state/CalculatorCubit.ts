@@ -15,20 +15,15 @@ export default class CalculatorCubit extends Cubit<CalculatorData> {
       activeStep: 0,
       employees: '',
       revenue: '',
-      ticketTime: 50,
-      ticketVolume: 250000,
-      ticketCost: 50,
+      ticketTime: 40,
+      ticketVolume: 100000,
+      ticketCost: 25,
     })
   }
 
   nextStep = (): void => {
-    if (this.state.activeStep < 2)
-      this.state.activeStep++
+    if (this.state.activeStep < 2) this.state.activeStep++
     this.emit(this.state)
-  }
-
-  getActiveStep = () => {
-    return this.state.activeStep
   }
 
   setEmployees = (employees: string | number): void => {
@@ -97,24 +92,26 @@ export default class CalculatorCubit extends Cubit<CalculatorData> {
 
   getExperienceResolution = (): number => {
     // Resolved * Revenue/(Employee * 2080)
-    const amt = this.getTicketsResolved()
-    * Number(this.state.revenue)
-    / (Number(this.state.employees) * 2080)
+    const amt =
+      (this.getTicketsResolved() * Number(this.state.revenue)) /
+      (Number(this.state.employees) * 2080)
     return Math.round(amt)
   }
 
   getExperienceAcceleration = (): number => {
     // Accelerated * Revenue/(Employee * 2080)
-    const amt = this.getTicketsAccelerated()
-    * Number(this.state.revenue)
-    / (Number(this.state.employees) * 2080)
+    const amt =
+      (this.getTicketsAccelerated() * Number(this.state.revenue)) /
+      (Number(this.state.employees) * 2080)
     return Math.round(amt)
   }
 
   getTotalBenefit = (): number => {
-    return this.getOperationalResolution()
-      + this.getOperationalAcceleration()
-      + this.getExperienceResolution()
-      + this.getExperienceAcceleration()
+    return (
+      this.getOperationalResolution() +
+      this.getOperationalAcceleration() +
+      this.getExperienceResolution() +
+      this.getExperienceAcceleration()
+    )
   }
 }

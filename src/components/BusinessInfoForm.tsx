@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Container from '@mui/material/Container'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
@@ -12,15 +13,16 @@ function BusinessInfoForm() {
   const [state, { nextStep, setEmployees, setRevenue }] = useBloc(
     CalculatorCubit,
   )
-
-  const handleEmployeesChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    setEmployees(event.target.value)
-  }
+  const [employeesChanged, setEmployeesChanged] = useState<boolean>(false)
+  const [revenueChanged, setRevenueChanged] = useState<boolean>(false)
 
   const handleRevenueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRevenue(event.target.value)
+    setRevenueChanged(true)
+  }
+
+  const formComplete = () => {
+    return employeesChanged && revenueChanged
   }
 
   return (
@@ -36,7 +38,10 @@ function BusinessInfoForm() {
           customInput={TextField}
           thousandSeparator
           isNumericString
-          onChange={handleEmployeesChange}
+          onValueChange={(values) => {
+            setEmployees(Number(values.floatValue))
+            setEmployeesChanged(true)
+          }}
           isAllowed={(values) => {
             const { formattedValue, floatValue } = values
             return formattedValue === '' || Number(floatValue) <= 500000
@@ -50,7 +55,10 @@ function BusinessInfoForm() {
           thousandSeparator
           isNumericString
           prefix={'$'}
-          onChange={handleRevenueChange}
+          onValueChange={(values) => {
+            setRevenue(Number(values.floatValue))
+            setRevenueChanged(true)
+          }}
           isAllowed={(values) => {
             const { formattedValue, floatValue } = values
             return formattedValue === '' || Number(floatValue) <= 100000000000
@@ -62,6 +70,7 @@ function BusinessInfoForm() {
           onClick={() => {
             nextStep()
           }}
+          disabled={!formComplete()}
         >
           Next
         </RoundedButton>

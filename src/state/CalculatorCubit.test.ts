@@ -10,9 +10,9 @@ describe('CalculatorCubit', () => {
       activeStep: 0,
       employees: '',
       revenue: '',
-      ticketTime: 50,
-      ticketVolume: 250000,
-      ticketCost: 50,
+      ticketTime: 40,
+      ticketVolume: 100000,
+      ticketCost: 25,
     }
   })
 

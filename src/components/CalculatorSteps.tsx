@@ -8,13 +8,13 @@ const steps = ['Business Information', 'Service Desk Info', 'Results']
 function CalculatorSteps(props: StepperProps) {
   return (
     <Box sx={{ width: '100%' }}>
-    <Stepper {...props} alternativeLabel>
-      {steps.map((label) => (
-        <Step key={label}>
-          <StepLabel>{label}</StepLabel>
-        </Step>
-      ))}
-    </Stepper>
+      <Stepper {...props} alternativeLabel>
+        {steps.map((label) => (
+          <Step key={label}>
+            <StepLabel>{label}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
     </Box>
   )
 }

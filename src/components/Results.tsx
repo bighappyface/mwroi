@@ -7,27 +7,44 @@ import TableContainer from '@mui/material/TableContainer'
 import TableRow from '@mui/material/TableRow'
 import Typography from '@mui/material/Typography'
 import NumberFormat from 'react-number-format'
+import { useBloc } from '../state/state'
+import CalculatorCubit from '../state/CalculatorCubit'
 
 const commonTextStyles = { lineHeight: 2, fontSize: 18 }
 
-const impactRows = [
-  ['Tickets Resolved', 20000],
-  ['Tickets Accelerated', 15000],
-  ['Productive Hours Saved per Employee', 4.6],
-  ['Total Wait Hours Saved per Employee	', 92],
-]
-
-const benefitOpsRows = [
-  ['Resolution', 500000],
-  ['Acceleration', 37500],
-]
-
-const benefitExpRows = [
-  ['Resolution', 500000],
-  ['Acceleration', 37500],
-]
-
 function Results() {
+  const [
+    state,
+    {
+      getTicketsResolved,
+      getTicketsAccelerated,
+      getProductiveHoursSaved,
+      getWaitHoursSaved,
+      getOperationalAcceleration,
+      getOperationalResolution,
+      getExperienceAcceleration,
+      getExperienceResolution,
+      getTotalBenefit,
+    },
+  ] = useBloc(CalculatorCubit)
+
+  const impactRows = [
+    ['Tickets Resolved', getTicketsResolved()],
+    ['Tickets Accelerated', getTicketsAccelerated()],
+    ['Productive Hours Saved per Employee', getProductiveHoursSaved()],
+    ['Total Wait Hours Saved per Employee	', getWaitHoursSaved()],
+  ]
+
+  const benefitOpsRows = [
+    ['Resolution', getOperationalResolution()],
+    ['Acceleration', getOperationalAcceleration()],
+  ]
+
+  const benefitExpRows = [
+    ['Resolution', getExperienceResolution()],
+    ['Acceleration', getExperienceAcceleration()],
+  ]
+
   return (
     <Grid container spacing={3}>
       <Grid item xs={12} sm={6}>
@@ -77,7 +94,7 @@ function Results() {
           Operational Efficiency
         </Typography>
         <TableContainer component={Paper}>
-          <Table aria-label="Year 1 Benefit Details">
+          <Table aria-label="Year 1 Benefit Details - Operational Efficiency">
             <TableBody>
               {benefitOpsRows.map((row) => (
                 <TableRow key={`Operational Efficiency ${row[0]}`}>
@@ -106,7 +123,7 @@ function Results() {
           Employee Experience
         </Typography>
         <TableContainer component={Paper}>
-          <Table aria-label="Year 1 Benefit Details">
+          <Table aria-label="Year 1 Benefit Details - Employee Experience">
             <TableBody>
               {benefitExpRows.map((row) => (
                 <TableRow key={`Employee Experience ${row[0]}`}>
@@ -125,6 +142,33 @@ function Results() {
                   </TableCell>
                 </TableRow>
               ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Typography
+          fontWeight="bold"
+          sx={{ mt: 2, mb: 1, ...commonTextStyles }}
+        >
+          Total
+        </Typography>
+        <TableContainer component={Paper}>
+          <Table aria-label="Year 1 Benefit Details - Total Benefit">
+            <TableBody>
+              <TableRow>
+                <TableCell>
+                  <Typography fontWeight="bold">Total</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography>
+                    <NumberFormat
+                      displayType="text"
+                      value={getTotalBenefit()}
+                      thousandSeparator
+                      prefix="$"
+                    />
+                  </Typography>
+                </TableCell>
+              </TableRow>
             </TableBody>
           </Table>
         </TableContainer>

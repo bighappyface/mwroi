@@ -29,7 +29,12 @@ function InputSlider(props: InputSliderProps) {
   }
 
   return (
-    <Grid container spacing={2} alignItems="center" columnSpacing={{ xs: 0, sm: 2 }}>
+    <Grid
+      container
+      spacing={2}
+      alignItems="center"
+      columnSpacing={{ xs: 0, sm: 2 }}
+    >
       <Grid item xs={8}>
         <Stack direction="row" spacing={1}>
           <Typography id={`input-slider-${props.labelShort}`}>
@@ -59,7 +64,7 @@ function InputSlider(props: InputSliderProps) {
         />
       </Grid>
       <Grid item xs={1}>
-        <Typography textAlign="center" display={{ xs: "none", sm: "block" }}>
+        <Typography textAlign="center" display={{ xs: 'none', sm: 'block' }}>
           <NumberFormat
             displayType="text"
             value={props.minValue}
@@ -79,7 +84,7 @@ function InputSlider(props: InputSliderProps) {
         />
       </Grid>
       <Grid item xs={1}>
-        <Typography textAlign="center" display={{ xs: "none", sm: "block" }}>
+        <Typography textAlign="center" display={{ xs: 'none', sm: 'block' }}>
           <NumberFormat
             displayType="text"
             value={props.maxValue}

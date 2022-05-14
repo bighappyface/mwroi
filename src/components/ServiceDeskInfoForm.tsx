@@ -8,7 +8,11 @@ import { useBloc } from '../state/state'
 import CalculatorCubit from '../state/CalculatorCubit'
 
 function ServiceDeskInfoForm() {
-  const [state, { nextStep }] = useBloc(CalculatorCubit)
+  const [
+    state,
+    { nextStep, setTicketTime, setTicketVolume, setTicketCost },
+  ] = useBloc(CalculatorCubit)
+
   return (
     <Container maxWidth="sm">
       <Stack alignItems="center" spacing={3}>
@@ -22,6 +26,11 @@ function ServiceDeskInfoForm() {
           label="Average Ticket Resolution Time (Hrs)"
           labelShort="ticket-time"
           tooltipText="The average number of hours to resolve a ticket"
+          numberFormatProps={{
+            onValueChange: (values) => {
+              setTicketTime(Number(values.floatValue))
+            },
+          }}
         />
         <InputSlider
           defaultValue={100000}
@@ -31,6 +40,11 @@ function ServiceDeskInfoForm() {
           labelShort="ticket-volume"
           tooltipText="The typical number of tickets received in a year"
           sliderStep={500}
+          numberFormatProps={{
+            onValueChange: (values) => {
+              setTicketVolume(Number(values.floatValue))
+            },
+          }}
         />
         <InputSlider
           defaultValue={25}
@@ -39,7 +53,12 @@ function ServiceDeskInfoForm() {
           label="Cost Per Ticket"
           labelShort="ticket-cost"
           tooltipText="The average cost to the company for each ticket received"
-          numberFormatProps={{ prefix: '$' }}
+          numberFormatProps={{
+            prefix: '$',
+            onValueChange: (values) => {
+              setTicketCost(Number(values.floatValue))
+            },
+          }}
         />
         <RoundedButton
           variant="contained"
