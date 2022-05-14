@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import BusinessInfoForm from './BusinessInfoForm'
+import Results from './Results'
 import ServiceDeskInfoForm from './ServiceDeskInfoForm'
 
 function Calculator() {
@@ -14,6 +15,8 @@ function Calculator() {
         <BusinessInfoForm />
         <br /><br /><br /><br />
         <ServiceDeskInfoForm />
+        <br /><br /><br /><br />
+        <Results />
       </Container>
     </Box>
   )
