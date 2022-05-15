@@ -19,9 +19,9 @@ function Calculator() {
       }}
     >
       <Container maxWidth="md" sx={{ py: 8 }}>
-        {activeStep == 0 && <BusinessInfoForm />}
-        {activeStep == 1 && <ServiceDeskInfoForm />}
-        {activeStep == 2 && <Results />}
+        {activeStep === 0 && <BusinessInfoForm />}
+        {activeStep === 1 && <ServiceDeskInfoForm />}
+        {activeStep === 2 && <Results />}
       </Container>
     </Box>
   )

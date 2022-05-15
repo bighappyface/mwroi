@@ -26,6 +26,11 @@ export default class CalculatorCubit extends Cubit<CalculatorData> {
     this.emit(this.state)
   }
 
+  resetSteps = (): void => {
+    this.state.activeStep = 0
+    this.emit(this.state)
+  }
+
   setEmployees = (employees: string | number): void => {
     this.state.employees = employees
     this.emit(this.state)

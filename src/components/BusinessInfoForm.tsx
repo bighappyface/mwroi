@@ -10,16 +10,9 @@ import { useBloc } from '../state/state'
 import CalculatorCubit from '../state/CalculatorCubit'
 
 function BusinessInfoForm() {
-  const [state, { nextStep, setEmployees, setRevenue }] = useBloc(
-    CalculatorCubit,
-  )
+  const [, { nextStep, setEmployees, setRevenue }] = useBloc(CalculatorCubit)
   const [employeesChanged, setEmployeesChanged] = useState<boolean>(false)
   const [revenueChanged, setRevenueChanged] = useState<boolean>(false)
-
-  const handleRevenueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setRevenue(event.target.value)
-    setRevenueChanged(true)
-  }
 
   const formComplete = () => {
     return employeesChanged && revenueChanged

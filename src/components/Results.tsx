@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
@@ -6,16 +7,19 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TableRow from '@mui/material/TableRow'
 import Typography from '@mui/material/Typography'
+import RoundedButton from './RoundedButton'
 import NumberFormat from 'react-number-format'
 import { useBloc } from '../state/state'
 import CalculatorCubit from '../state/CalculatorCubit'
+import { createRef } from 'react'
 
 const commonTextStyles = { lineHeight: 2, fontSize: 18 }
 
 function Results() {
   const [
-    state,
+    ,
     {
+      resetSteps,
       getTicketsResolved,
       getTicketsAccelerated,
       getProductiveHoursSaved,
@@ -31,7 +35,10 @@ function Results() {
   const impactRows = [
     ['Tickets Resolved', getTicketsResolved()],
     ['Tickets Accelerated', getTicketsAccelerated()],
-    ['Productive Hours Saved per Employee', getProductiveHoursSaved().toFixed(1)],
+    [
+      'Productive Hours Saved per Employee',
+      getProductiveHoursSaved().toFixed(1),
+    ],
     ['Total Wait Hours Saved per Employee	', getWaitHoursSaved().toFixed(1)],
   ]
 
@@ -45,10 +52,18 @@ function Results() {
     ['Acceleration', getExperienceAcceleration()],
   ]
 
+  const topRef = createRef()
+
   return (
     <Grid container spacing={3}>
+      <Grid item xs={12}>
+        <Box ref={topRef}></Box>
+        <Typography textAlign="center" component="h2" variant="h5">
+          What's My ROI?
+        </Typography>
+      </Grid>
       <Grid item xs={12} sm={6}>
-        <Typography fontWeight="bold" sx={commonTextStyles}>
+        <Typography component="h3" variant="h5" color="primary.main">
           Year 1 Ticket Impact
         </Typography>
         <Typography sx={commonTextStyles}>
@@ -81,7 +96,7 @@ function Results() {
         </TableContainer>
       </Grid>
       <Grid item xs={12} sm={6}>
-        <Typography fontWeight="bold" sx={commonTextStyles}>
+        <Typography component="h3" variant="h5" color="primary.main">
           Year 1 Benefit
         </Typography>
         <Typography sx={commonTextStyles}>
@@ -172,6 +187,20 @@ function Results() {
             </TableBody>
           </Table>
         </TableContainer>
+      </Grid>
+      <Grid item xs={12} textAlign="center">
+        <RoundedButton
+          variant="outlined"
+          size="large"
+          onClick={() => {
+            if (topRef.current) {
+              (topRef as any).current.scrollIntoView();
+            }
+            resetSteps()
+          }}
+        >
+          Start Over
+        </RoundedButton>
       </Grid>
     </Grid>
   )
