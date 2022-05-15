@@ -189,6 +189,7 @@ function Results() {
         </TableContainer>
       </Grid>
       <Grid item xs={12} textAlign="center">
+        <Box sx={{pt: 3}}>
         <RoundedButton
           variant="outlined"
           size="large"
@@ -201,6 +202,7 @@ function Results() {
         >
           Start Over
         </RoundedButton>
+        </Box>
       </Grid>
     </Grid>
   )
